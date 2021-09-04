@@ -1,11 +1,18 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers, exceptions
 
+from tweets.models import Tweet
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['id', 'username', 'email']
+
+class UserSerializerForTweet(serializers.ModelSerializer):
+    class Meta:
+        model = Tweet
+        fields = ('id', 'user', 'created_at', 'content')
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
