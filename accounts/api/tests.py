@@ -112,7 +112,7 @@ class AccountApiTests(TestCase):
 
         # 成功注册
         response = self.client.post(SIGNUP_URL, data)
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['user']['username'], 'someone')
         # 验证用户已经登入
         response = self.client.get(LOGIN_STATUS_URL)
