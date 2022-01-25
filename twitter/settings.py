@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '192.168.33.10', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    # Django default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party packages
     'rest_framework',
+    'django_filters',
     'accounts',
+
+    # project apps
     'tweets',
     'friendships',
     'newsfeeds',
@@ -48,7 +53,10 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ]
 }
 
 MIDDLEWARE = [
