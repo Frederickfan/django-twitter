@@ -1,9 +1,7 @@
-from django.utils import timezone
-
 from comments.models import Comment
-from testing.testcases import TestCase
+from django.utils import timezone
 from rest_framework.test import APIClient
-
+from testing.testcases import TestCase
 
 COMMENT_URL = '/api/comments/'
 
@@ -136,3 +134,5 @@ class CommentApiTests(TestCase):
             'user_id': self.linghu.id,
         })
         self.assertEqual(len(response.data['comments']), 2)
+
+
