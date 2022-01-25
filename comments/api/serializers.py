@@ -19,6 +19,15 @@ class CommentSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
         )
+class CommentSerializerForUpdate(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('content',)
+
+    def update(self, instance, validated_data):
+        instance.content = validated_data['content']
+        instance.save()
+        return instance
 
 
 class CommentSerializerForCreate(serializers.ModelSerializer):
