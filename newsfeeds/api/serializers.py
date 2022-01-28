@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from newsfeeds.models import NewsFeed
-from tweets.api.serializer import TweetSerializer
+from tweets.api.serializers import TweetSerializer
 
 
 class NewsFeedSerializer(serializers.ModelSerializer):
