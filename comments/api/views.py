@@ -8,6 +8,7 @@ from comments.api.serializers import (
     CommentSerializer,
     CommentSerializerForCreate, CommentSerializerForUpdate,
 )
+from inbox.services import NotificationService
 from utils.decorators import required_params
 
 class CommentViewSet(viewsets.ModelViewSet):
@@ -60,6 +61,7 @@ class CommentViewSet(viewsets.ModelViewSet):
             }, status=status.HTTP_400_BAD_REQUEST)
 
         comment = serializer.save()
+        NotificationService.send_comment_notification(comment)
         return Response(
             CommentSerializer(comment, context={"request": request}).data,
             status=status.HTTP_201_CREATED,

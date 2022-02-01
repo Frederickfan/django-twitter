@@ -47,3 +47,5 @@ ufw==0.36
 urllib3==1.22
 wrapt==1.12.1
 zope.interface==4.3.2
+
+django-notifications-hq~=1.6.0
